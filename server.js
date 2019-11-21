@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // Init app
 const app = express();
@@ -26,6 +29,7 @@ app.get('/api/test', (req, res) => {
 });
 
 // Start Server
-app.listen(3000, () => {
-  console.log('Server Started on port 3000');
+app.listen(process.env.PORT, () => {
+  console.log(`Server running in ${process.env.NODE_ENV} mode`);
+  console.log(`Server Started on port ${process.env.PORT}`);
 });
